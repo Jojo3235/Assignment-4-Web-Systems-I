@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instructions for homework 3</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link href='http://fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <h1>Help</h1>
+  <div class="step">
+    <h2>Goals</h2>
+    <p>At the end of this tutorial, we will have a simple, web-based ToDo list. The list contains a text (with max 100
+      characters) and a status (0 for closed, 1 for open) for each item. Through the web-based user interface, open
+      items can be view and edited and new items can be added.</p>
+
+    <p>During development, all pages will be available on localhost only, but later on it will be shown how to adapt the
+      application for a “real” server, including how to use with Apache’s mod_wsgi.</p>
+
+    <p>Bottle will do the routing and format the output, with the help of templates. The items of the list will be
+      stored inside a SQLite database. Reading and writing the database will be done by Python code.</p>
+
+    <p>We will end up with an application with the following pages and functionality:</p>
+    <ul>
+      <li>
+        <p>start page <code>http://localhost:8080/todo</code></p>
+      </li>
+      <li>
+        <p>adding new items to the list: <code>http://localhost:8080/new</code></p>
+      </li>
+      <li>
+        <p>page for editing items: <code>http://localhost:8080/edit/&lt;no:int&gt;</code></p>
+      </li>
+      <li>
+        <p>catching errors</p>
+      </li>
+    </ul>
+  </div>
+  <div class="step">
+    <h2>Before we start</h2>
+    <h3>Install Bottle</h3>
+    <p>Assuming that you have a fairly new installation of Python (version 2.5 or higher), you only need to install
+      Bottle in addition to that. Bottle has no other dependencies than Python itself.</p>
+    <p>You can either manually install Bottle or use Python’s easy_install: <code><span>easy_install <span>bottle</code>
+    </p>
+    <h3>Further Software Necessities</h3>
+    <p>As we use SQLite3 as a database, make sure it is installed. On Linux systems, most distributions have SQLite3
+      installed by default. SQLite is available for Windows and MacOS X as well and the <cite>sqlite3</cite> module is
+      part of the python standard library.</p>
+    <h3>Create An SQL Database</h3>
+    <p>First, we need to create the database we use later on. To do so, save the following script in your project
+      directory and run it with python. You can use the interactive interpreter too:</p>
+    <pre>
+import sqlite3
+conn = sqlite3.connect('todo.db') # Warning: This file is created in the current directory
+conn.execute("CREATE TABLE todo (id INTEGER PRIMARY KEY, task char(100) NOT NULL, status bool NOT NULL)")
+conn.execute("INSERT INTO todo (task,status) VALUES ('Read A-byte-of-python to get a good introduction into Python',0)")
+conn.execute("INSERT INTO todo (task,status) VALUES ('Visit the Python website',1)")
+conn.execute("INSERT INTO todo (task,status) VALUES ('Test various editors for and check the syntax highlighting',1)")
+conn.execute("INSERT INTO todo (task,status) VALUES ('Choose your favorite WSGI-Framework',0)")
+conn.commit()
+    </pre>
+    <p>This generates a database-file <cite>todo.db</cite> with tables called <code><span>todo</code> and three columns
+      <code><span>id</code>, <code><span>task</code>, and <code><span>status</code>. <code><span>id</code> is a unique
+      id for each row, which is used
+      later on to reference the rows. The column <code><span>task</code> holds the text which describes the task, it
+      can be max 100 characters long. Finally, the column <code><span>status</code> is used to mark a task as open
+      (value 1) or
+      closed (value 0).</p>
+  </div>
+  <footer>
+    <p><a href="/">Show all tasks...</a></p>
+  </footer>
+
+</body>
+
+</html>

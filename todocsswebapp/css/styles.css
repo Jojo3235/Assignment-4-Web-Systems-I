@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Sintony:wght@400;700&display=swap');
+
+/* TYPOGRAPHY
+/* -------------------------------------------------- */
+
+html, body * {
+	font-family: 'Sintony', sans-serif;
+}
+
+/* LAYOUT
+/* -------------------------------------------------- */
+
+body {
+	font-size: 10pt;
+	line-height: 12pt;
+	margin: 20px auto;
+}
+
+@media all {
+	body {
+		width: 800px;
+		background: url('https://cdn0.iconfinder.com/data/icons/seo-smart-pack/128/grey_new_seo-43-512.png') 10px 10px no-repeat;
+		background-size: 150px;
+	}
+}
+
+@media (max-width:800px) {
+	body {
+		width: 80%;
+		background: url('https://cdn0.iconfinder.com/data/icons/seo-smart-pack/128/grey_new_seo-43-512.png') no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+		background-size: 450px;
+	}
+}
+
+footer {margin-top: 50px;}
+
+/* COMMON STYLES
+/* -------------------------------------------------- */
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover{
+	font-weight: bold;
+}
+
+pre {
+	font-family: monospace, Courier New;
+	padding:5px;
+	border: 1px dashed #d1d1d1;
+	background-color: #f1f1f1;
+	font-size: 9pt;
+	line-height: 9pt;
+}
+
+div.step {
+	padding: 10px;
+	box-shadow: none;
+}
+
+div.step:hover {
+	transition: .3s ease-in-out;
+	box-shadow: 2px 2px 7px darkgray;
+	background: rgba(255,255,255,.2);
+	transform: scale(1.05);
+	border-radius: 3px;
+}
+
+/* FORMS
+/* -------------------------------------------------- */
+
+input {
+	font-size: 10pt;
+	line-height: 12pt;
+	border: none;
+	outline: none;
+}
+
+
+/* TABLES
+/* -------------------------------------------------- */
+
+table {
+	font-size: 10pt;
+	line-height: 12pt;
+	border-collapse: collapse;
+	border: none;
+	width: 100%;
+}
+
+tr {
+	border-top: 1px solid rgba(0,0,0,.15);
+	border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+td {
+	padding: 4px 10px;
+	opacity: .35;
+}
+
+td.centered {
+	text-align: center;
+}
+
+td.centered a {
+	opacity: 0;
+}
+
+tr:hover td {
+	background: #f1f1f1;
+	opacity: 1;
+}
+
+tr:hover a {opacity: 1;}
