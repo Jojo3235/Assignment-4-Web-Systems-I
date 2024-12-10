@@ -10,6 +10,11 @@
           --><li><a href="venue.html">Venue</a></li><!--
           --><li><a href="register.html">Register</a></li>
         </ul>
+        <ul>
+          <li><a href="admin/speakers">Admin Speakers</a></li>
+          <li><a href="admin/tickets">Admin Tickets</a></li>
+        </ul>
+
       </nav>
 
     </footer>

@@ -1,25 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-%  include('/conference-app/templates/head.tpl', title='Register - Styles Conference')
+%  include('conference-app/templates/head.tpl', title='Register - Admin')
 
   <body>
 
     <!-- Header -->
 
-    % include('/conference-app/templates/header.tpl')
+    % include('conference-app/templates/header.tpl')
 
     <!-- Lead -->
 
-    <section class="row-alt">
-      <div class="lead container">
-
-        <h1>Register</h1>
-
-        <p>Every year we aim to have an unbelievable time, and this year we&#8217;d love it for you to join us. Conference passes only cost $99, one of the best values you&#8217;ll find.</p>
-
-      </div>
-    </section>
+    % include('conference-app/templates/lead.tpl', title = 'Admin  Tickets', subtitle = 'Here you can manage the tickets bought by the attendees.')
 
     <!-- Main content -->
 
@@ -29,26 +21,30 @@
         <!-- Details -->
 
         <section class="col-2-3">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Quantity</th>
+                    <th>Comments</th>
+                </tr>
 
-          <h2>Purchase a Conference Pass</h2>
-          <h5>$99 per Pass</h5>
+% for row in rows:
 
-          <p>Purchase your Styles Conference pass using the form to the right. Multiple passes may be purchased within the same order, so feel free to bring a friend or two along. Once your order is finished we&#8217;ll follow up and provide a receipt for your purchase. See you soon!</p>
+                <tr>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                </tr>
 
-          <h4>Why Attend?</h4>
-
-          <ul class="why-attend">
-            <li>Over twenty world-class speakers</li>
-            <li>One full day of workshops and two full days of presentations</li>
-            <li>Hosted at The Chicago Theatre, a historical landmark</li>
-            <li>August in Chicago is simply amazing</li>
-          </ul>
-
+%end
+            <table>
         </section><!--
 
         Registration form
 
-        --><form class="col-1-3" action="#" method="post">
+        --><form class="col-1-3" action="/admin/tickets" method="post">
 
           <fieldset class="register-group">
 
