@@ -2,7 +2,7 @@
 <html lang="en">
 
   % include('conference-app/templates/head.tpl', title='Venue - Styles Conference')
-
+w
   <body>
 
     <!-- Header -->

@@ -36,19 +36,18 @@
                 <tr>
                     <td>{{row[1]}}</td>
                     <td>{{row[2]}}</td>
-                    <td>avatar</td>
+                    <td><img style="width:55px;object-fit: cover; border-radius: 50%;" src="/assets/images/speakers/{{row[1]}}-{{row[2]}}.jpg?76547654"></td>
                     <td>{{row[3]}}</td>
-                    <td><a href="/admin/speakers/{{row[0]}}"></a></td>
-                    <td><a href="/admin/speakers/{{row[0]}}/delete"></a></td>
+                    <td><a href="/admin/speakers/{{row[0]}}">edit</a></td>
+                    <td><a href="/admin/speakers/{{row[0]}}/delete">delete</a></td>
                 </tr>
-
 %end
             <table>
         </section><!--
 
         Registration form
 
-        --><form class="col-1-3" action="/admin/speakers" method="post">
+        --><form class="col-1-3" action="/admin/speakers" method="post" enctype="multipart/form-data">
 
           <fieldset class="register-group">
 
@@ -86,10 +85,16 @@
                 Twitter
                 <input type="text" name="twitter" placeholder="Twitter">
             </label>
+            
+            <label>
+              Select image to upload:
+              <input type="file" name="fileToUpload" id="fileToUpload">
+            </label>
 
             </fieldset>
 
           <input class="btn btn-default" type="submit" name="submit" value="Purchase">
+          
 
         </form>
 
@@ -98,7 +103,7 @@
 
     <!-- Footer -->
 
-% include('conference-app/templates/footer.tpl')
+  % include('conference-app/templates/footer.tpl')
 
   </body>
 </html>

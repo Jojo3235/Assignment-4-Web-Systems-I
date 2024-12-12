@@ -85,7 +85,7 @@
 
     <!-- Footer -->
 
-% include('conference-app/templates/footer.tpl')
+    % include('conference-app/templates/footer.tpl')
 
   </body>
 </html>

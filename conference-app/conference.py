@@ -1,5 +1,5 @@
 from bottle import route, run, template, debug, request, static_file, redirect
-import sqlite3
+import sqlite3, os
 
 @route("/")
 @route("/index.html")
@@ -16,7 +16,12 @@ def venue():
 
 @route("/speakers.html")
 def speakers():
-    return template("./conference-app/templates/speakers.tpl")
+    conn  = sqlite3.connect('./conference-app/conference.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM speakers ORDER BY 3;")
+    result = c.fetchall()
+    c.close()
+    return template("./conference-app/templates/speakers.tpl", rows = result)
 
 @route("/register.html")
 def register():
@@ -76,6 +81,13 @@ def admin_speakers_create():
         bio = request.forms.bio
         website = request.forms.website
         twitter = request.forms.twitter
+        upload = request.files.get('upload')
+        if upload:
+            name, ext = os.path.splitext(upload.filename)
+            if ext not in ('.jpg'):
+                return "File extension not allowed."
+            # upload image to the assets speakers folder
+            upload.save('./conference-app/assets/images/speakers/'+firstname+"-"+lastname+ext, overwrite=True)
         conn = sqlite3.connect('./conference-app/conference.db')
         c = conn.cursor()
         c.execute("SELECT COUNT(*) FROM speakers")
@@ -84,6 +96,50 @@ def admin_speakers_create():
         conn.commit()
         c.close()
         redirect('/admin/speakers')
+
+@route('/admin/speakers/:id')
+def admin_speaker(id):
+    conn  = sqlite3.connect('./conference-app/conference.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM speakers WHERE id = ?", (str(id)))
+    result = c.fetchone()
+    c.close()
+    return template("conference-app/templates/admin/speaker.tpl", row = result)
+
+
+@route('/admin/speakers/:id', method="POST")
+def admin_speaker_update(id):
+    if request.forms.submit:
+        firstname = request.forms.firstname
+        lastname = request.forms.lastname
+        tagline = request.forms.tagline
+        description = request.forms.description
+        bio = request.forms.bio
+        website = request.forms.website
+        twitter = request.forms.twitter
+        upload = request.files.get('upload')
+        if upload:
+            name, ext = os.path.splitext(upload.filename)
+            if ext not in ('.jpg'):
+                return "File extension not allowed."
+            upload.save('/conference-app/assets/images/speakers/'+firstname+"-"+lastname+ext, overwrite=True)
+        conn = sqlite3.connect('./conference-app/conference.db')
+        c = conn.cursor()
+        c.execute("UPDATE speakers SET firstname = ?, lastname = ?, tagline = ?, description = ?, bio = ?, website = ?, twitter = ? WHERE id = ?", (firstname, lastname, tagline, description, bio, website, twitter, id))
+        conn.commit()
+        c.close()
+        redirect('/admin/speakers')
+
+
+@route('/admin/speakers/:id/delete')
+def admin_speaker_delete(id):
+    conn = sqlite3.connect('./conference-app/conference.db')
+    c = conn.cursor()
+    c.execute("DELETE FROM speakers WHERE id = ?", (str(id)))
+    conn.commit()
+    c.close()
+    redirect('/admin/speakers')
+
 
 @route("/register.html", method="POST")
 def checkout():
