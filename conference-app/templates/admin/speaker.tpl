@@ -69,7 +69,7 @@
             
             <label>
               Select image to upload:
-              <input type="file" name="fileToUpload" id="fileToUpload">
+              <input type="file" name="upload" id="upload">
             </label>
 
             </fieldset>

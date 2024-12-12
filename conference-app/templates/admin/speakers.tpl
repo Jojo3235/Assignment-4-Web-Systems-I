@@ -88,12 +88,12 @@
             
             <label>
               Select image to upload:
-              <input type="file" name="fileToUpload" id="fileToUpload">
+              <input type="file" name="upload" id="fileToUpload">
             </label>
 
             </fieldset>
 
-          <input class="btn btn-default" type="submit" name="submit" value="Purchase">
+          <input class="btn btn-default" type="submit" name="submit" value="Save">
           
 
         </form>

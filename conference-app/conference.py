@@ -135,9 +135,13 @@ def admin_speaker_update(id):
 def admin_speaker_delete(id):
     conn = sqlite3.connect('./conference-app/conference.db')
     c = conn.cursor()
+    c.execute("SELECT * FROM speakers WHERE id = ?", (str(id)))
+    result = c.fetchone()
+    name = result[1]+"-"+result[2]
     c.execute("DELETE FROM speakers WHERE id = ?", (str(id)))
     conn.commit()
     c.close()
+    os.remove('./conference-app/assets/images/speakers/'+name+'.jpg')
     redirect('/admin/speakers')
 
 
