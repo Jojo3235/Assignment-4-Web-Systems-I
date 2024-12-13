@@ -36,7 +36,7 @@
                 <tr>
                     <td>{{row[1]}}</td>
                     <td>{{row[2]}}</td>
-                    <td><img style="height:55px;width:55px; heiobject-fit: cover; border-radius: 50%;" src="/assets/images/speakers/{{row[1]}}-{{row[2]}}.jpg?76547654"></td>
+                    <td><img style="height:55px;width:55px;object-fit: cover; border-radius: 50%;" src="/assets/images/speakers/{{row[1]}}-{{row[2]}}.jpg?76547654"></td>
                     <td>{{row[3]}}</td>
                     <td><a href="/admin/speakers/{{row[0]}}">edit</a></td>
                     <td><a href="/admin/speakers/{{row[0]}}/delete">delete</a></td>
