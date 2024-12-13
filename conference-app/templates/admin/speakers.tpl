@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-%  include('conference-app/templates/head.tpl', title='Speakers - Admin')
+  %  include('conference-app/templates/head.tpl', title='Speakers - Admin')
 
   <body>
 
@@ -14,7 +14,7 @@
     % include('conference-app/templates/lead.tpl', title = 'Admin Speakers', subtitle = 'Here you can manage the speakers attending the conference.')
 
     <!-- Main content -->
-
+    
     <section class="row">
       <div class="grid">
 
@@ -31,17 +31,17 @@
                     <th></th>
                 </tr>
 
-% for row in rows:
+      % for row in rows:
 
                 <tr>
                     <td>{{row[1]}}</td>
                     <td>{{row[2]}}</td>
-                    <td><img style="width:55px;object-fit: cover; border-radius: 50%;" src="/assets/images/speakers/{{row[1]}}-{{row[2]}}.jpg?76547654"></td>
+                    <td><img style="height:55px;width:55px; heiobject-fit: cover; border-radius: 50%;" src="/assets/images/speakers/{{row[1]}}-{{row[2]}}.jpg?76547654"></td>
                     <td>{{row[3]}}</td>
                     <td><a href="/admin/speakers/{{row[0]}}">edit</a></td>
                     <td><a href="/admin/speakers/{{row[0]}}/delete">delete</a></td>
                 </tr>
-%end
+      %end
             <table>
         </section><!--
 
@@ -98,12 +98,15 @@
 
         </form>
 
+    <section class="row">
+      <div class="grid">
+
       </div>
     </section>
 
     <!-- Footer -->
 
-  % include('conference-app/templates/footer.tpl')
+    % include('conference-app/templates/footer.tpl')
 
   </body>
 </html>

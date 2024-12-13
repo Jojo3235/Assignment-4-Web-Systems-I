@@ -11,15 +11,7 @@
 
     <!-- Lead -->
 
-    <section class="row-alt">
-      <div class="lead container">
-
-        <h1>Speakers</h1>
-
-        <p>We&#8217;re happy to welcome over twenty speakers to present on the industry&#8217;s latest technologies. Prepare for an inspiration extravaganza.</p>
-
-      </div>
-    </section>
+    % include('conference-app/templates/lead.tpl', title = 'Speakers', subtitle = 'Meet the speakers who will be presenting at the conference.')
 
     <!-- Main content -->
 
