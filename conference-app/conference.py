@@ -122,7 +122,8 @@ def admin_speaker_update(id):
             name, ext = os.path.splitext(upload.filename)
             if ext not in ('.jpg'):
                 return "File extension not allowed."
-            upload.save('/conference-app/assets/images/speakers/'+firstname+"-"+lastname+ext, overwrite=True)
+            # upload image to the assets speakers folder
+            upload.save('./conference-app/assets/images/speakers/'+firstname+"-"+lastname+ext, overwrite=True)
         conn = sqlite3.connect('./conference-app/conference.db')
         c = conn.cursor()
         c.execute("UPDATE speakers SET firstname = ?, lastname = ?, tagline = ?, description = ?, bio = ?, website = ?, twitter = ? WHERE id = ?", (firstname, lastname, tagline, description, bio, website, twitter, id))

@@ -19,8 +19,8 @@
       <div class="grid">
 
 % for row in rows:
-%include('conference-app/templates/speaker.tpl', row=row)
-%end
+% include('conference-app/templates/speaker.tpl', row=row)
+% end
 
       </div>
     </section>

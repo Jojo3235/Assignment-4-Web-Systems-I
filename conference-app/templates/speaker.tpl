@@ -16,7 +16,7 @@
     --><aside class="col-1-3">
       <div class="speaker-info">
 
-        <img src="assets/images/speakers/{{row[1]}}-{{row[2]}}.jpg" alt="{{row[1]}} {{row[2]}}">
+        <img style="height:150px;width:150px;object-fit: cover; border-radius: 50%;" src="/assets/images/speakers/{{row[1].strip().lower().replace(' ', '-')}}-{{row[2].strip().lower().replace(' ', '-')}}.jpg" alt="{{row[1]}} {{row[2]}}">
 
         <ul>
           <li><a href="{{row[6]}}">{{row[6]}}</a></li>

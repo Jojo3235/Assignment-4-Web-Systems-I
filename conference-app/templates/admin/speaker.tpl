@@ -22,7 +22,7 @@
 
         <section class="col-2-3">
 
-% include('conference-app/templates/speaker.tpl', row=row)
+      % include('conference-app/templates/speaker.tpl', row=row)
 
         </section><!--
 
