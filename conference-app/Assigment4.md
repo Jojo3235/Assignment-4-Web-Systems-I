@@ -106,7 +106,7 @@ This pages would be just for administrators to do the tasks we implemented in ou
 
 The layout can be the similar to the rest of the web site:
 
-![*Layout Skecth*](./pics/1.png)
+![*Layout Skecth*](conference-app/pics/1.png)
 
 \newpage
 
@@ -232,6 +232,6 @@ After working on this last assignment, we conclude that the most remarkable bene
 - **Routing**: It's simple and intuitive, easy to work with.
 - **Dependencies**: *Bottle* does not use external libraries, so it's faster and has no compatibility issues.
 - **Performance**: It is fast, we don't really know how would it work for high traffic websites, but for low traffic works pretty fast.
-- **Server**: The *HTP* server is built inside *Bottle*, making our work much easier.
+- **Server**: The *HTTP* server is built inside *Bottle*, making our work much easier.
 - **Weight**: It's a single file, it can't be lighter and easier than that.
 - **Simplicity**: This is its most important feature; it's easy to learn and work with, it reduces complexity of this kind of tasks and lets us work faster and better.
